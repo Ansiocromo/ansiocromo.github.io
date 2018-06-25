@@ -1,0 +1,123 @@
+<html>
+  <head>
+    <title>ansiocromo</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="homeStyle.css" rel="stylesheet" type="text/CSS"/>
+    <link rel="preload" href="./fonts/GT-America-Bold.woff" as="font" />
+    <link rel="preload" href="./fonts/GT-America-Medium.woff" as="font" />
+    <link rel="preload" href="./assets/logo2.png" as="image" />
+  </head>
+  <body>
+    <div class="navbar-parent">
+    <div class="mainhead">
+      <a href="./index" class="headerTitles">home</a>
+      <a href="./login" class="headerTitles">risultati</a>
+      <a href="./stat" class="headerTitles">statistiche</a>
+      <a href="./about" class="headerTitles">chi siamo</a>
+    </div>
+  </div>
+  <!-- mobile-->
+  <div class="mobile-navbar">
+    <div class="ham-button"  onclick="toggleNavbar()">
+      <span class="menu-txt" id="menuTxt">menu</span>
+      <div class="ham-icon" id="hamIcon">
+      <div class="ham-bar bar1" id="hamBar1"></div>
+      <div class="ham-bar bar2" id="hamBar2"></div>
+      <div class="ham-bar bar3" id="hamBar3"></div>
+    </div>
+    <div class="close-icon hideOpacity" id="closeIcon">
+    <div class="close-bar cbar1" id="hamBar1"></div>
+    <div class="close-bar cbar2" id="hamBar2"></div>
+  </div>
+  </div>
+    <div class="navbar-menu closed" id="navbarMenu">
+      <a href="./index" class="headerTitlesM">home</a>
+      <a href="./login" class="headerTitlesM">risultati</a>
+      <a href="./stat" class="headerTitlesM">statistiche</a>
+      <a href="./about" class="headerTitlesM">chi siamo</a>
+    </div>
+  </div>
+  <!-- mobile end-->
+    <div class="logo" id="ripple-logo" style="background: url('./assets/logo2.png') center center / cover no-repeat; height: 100%; width:100%; margin:0; padding:0; cursor:pointer;"></div>
+    <div class="logo" id="static-logo">ansiocromo</div>
+    <div class="claim"><p id="claim">che forma ha la tua ansia?</p>
+  </div>
+    <div class="scrollbox-top">
+    <div id="scroll-down" onclick="scrollPageDown()">
+      <svg id="arrowDown-svg" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-10 0 140 80">
+        <polyline id="arrowDown-line" points="3,3,30,20,57,3"/>
+      </svg></div>
+  </div>
+    <div class="section01">
+      <p class="bigtext" id="description">ansiocromo è in grado di <br/> darti una risposta.</p>
+      <p class="bigtext" id="desc-links">
+        hai già fatto il test?<br>
+        <a href="http://ansiocromo.it/risultati" target="_blank">guarda i risultati</a>
+      </p>
+    </div>
+      <!-- <div class="section01-mail">
+      <p class="bigtext" id="mail-txt">inserisci qui la tua mail per ricevere l'invito esclusivo all'evento.</p>
+      <input type="text" name="mailbox" placeholder="indirizzo e-mail" id="mailbox"/>
+      <input type="button" name="invia" value="invia" id="invia"/> -->
+    </div>
+
+    <script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"
+          type="text/javascript">
+    </script>
+    <script src="jquery.ripples-min.js" type="text/javascript"></script>
+    <script>
+
+    const navbarMenu = document.getElementById("navbarMenu");
+    const hamIcon = document.getElementById("hamIcon");
+    var open=false;
+
+    function toggleNavbar() {
+
+      if(open==false) {
+        navbarMenu.classList.remove('closed');
+        hamIcon.classList.add('hideOpacity');
+        closeIcon.classList.remove('hideOpacity');
+        open=true;
+      }
+      else{
+        navbarMenu.classList.add('closed');
+        hamIcon.classList.remove('hideOpacity');
+        closeIcon.classList.add('hideOpacity');
+        open=false;
+      }
+    }
+
+      $('#ripple-logo').ripples({
+        dropRadius:100,
+        perturbance:0.025,
+        resolution:80,
+      });
+
+      $('#ripple-logo').ripples('drop',600,900,400,.5);
+
+      function scrollPageDown() {
+        $('html, body').animate({
+          scrollTop: $("#scroll-down").offset().top
+        }, 1400);
+      }
+
+      function scrollPageUp() {
+        $('html, body').animate({
+          scrollTop:0
+        }, 1400);
+      }
+
+      window.addEventListener('scroll', e=>{
+        if($(window).scrollTop()>=120){
+          $('.scrollbox-top').addClass('hideOpacity');
+        }
+        else{
+          $('.scrollbox-top').removeClass('hideOpacity');
+      }
+      });
+    </script>
+  </body>
+</html>

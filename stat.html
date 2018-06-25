@@ -1,0 +1,456 @@
+<html>
+  <head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>statistiche - ansiocromo</title>
+    <script rel="preload" src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+    <link rel="stylesheet" href="statStyle.css" type="text/CSS">
+    <link rel="preload" href="/fonts/GT-America-Bold.woff" as="font" />
+    <link rel="preload" href="/fonts/GT-America-Medium.woff" as="font" />
+    <script rel="preload">
+    </script>
+  </head>
+
+  <body>
+    <!-- <p id="txt-test"></p>
+    <button id="prfLogout">Logout</button> -->
+<div id="top"></div>
+    <!-- mobile-->
+    <div class="mobile-navbar">
+      <div class="ham-button"  onclick="toggleNavbar()">
+        <span class="menu-txt" id="menuTxt">menu</span>
+        <div class="ham-icon" id="hamIcon">
+        <div class="ham-bar bar1" id="hamBar1"></div>
+        <div class="ham-bar bar2" id="hamBar2"></div>
+        <div class="ham-bar bar3" id="hamBar3"></div>
+      </div>
+      <div class="close-icon hideOpacity" id="closeIcon">
+      <div class="close-bar cbar1" id="hamBar1"></div>
+      <div class="close-bar cbar2" id="hamBar2"></div>
+    </div>
+    </div>
+      <div class="navbar-menu closed" id="navbarMenu">
+        <a href="./index" class="headerTitlesM">home</a>
+        <a href="./login" class="headerTitlesM">risultati</a>
+        <a href="./stat" class="headerTitlesM">statistiche</a>
+        <a href="./about" class="headerTitlesM">chi siamo</a>
+      </div>
+    </div>
+    <!-- mobile end-->
+
+    <div class="navbar-parent">
+    <div class="mainhead">
+      <a href="./index" class="headerTitles">home</a>
+      <a href="./login" class="headerTitles">risultati</a>
+      <a href="./stat" class="headerTitles">statistiche</a>
+      <a href="./about" class="headerTitles">chi siamo</a>
+    </div>
+  </div>
+    <div class="container-1">
+
+      <div class="generalTitles-container">
+        <p id="statGeneralTitle">statistiche</p>
+        <p id="numPersTitle">numero di persone attualmente analizzate: <span id="numPers" class="hideOpacity blur"></span></p>
+      </div>
+
+    <div class="rappPercTot-container sideTitles-container">
+      <p id="rappPercTot-title" class="sideTitles">rapporto percentuale <br/>complessivo per <br/>ogni ansia</p>
+      <div id="rappPercTot-canvas" class="statCanvas">
+        <svg version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        	 viewBox="185 120 1200 650" style="enable-background:new 0 0 1200 650;" xml:space="preserve">
+           <style type="text/css">
+            .sb0{fill:#EF0A56;}
+            .sb1{font-family:'GT-America-Medium';}
+            .sb2{font-size:27px;}
+            .sb3{fill:#6600CC;}
+            .sb4{fill:#00CCCC;}
+            .sb5{fill:#1051E2;}
+            .sb6{fill:#333333;}
+            .sb7{font-family:'GT-America-Bold';}
+            .sb8{font-size:39px;}
+            .sb9{letter-spacing:1;}
+            .sb10{font-size:21px;}
+           </style>
+          <circle cx="595.2" cy="325" r="185" opacity="0.26" fill="none" stroke="#B3B3B3" stroke-width="3.8678" />
+          <circle id="SaTOT" stroke="#EF0A56" fill="none" opacity="0.75" cx="595.2" cy="325" r="110" stroke-width="100" stroke-dasharray="0" stroke-dashoffset="0"/>
+          <circle id="LaTOT" stroke="#00CCCC" fill="none" opacity="0.75" cx="595.2" cy="325" r="110" stroke-width="100" stroke-dasharray="0" stroke-dashoffset="0"/>
+          <circle id="InTOT" stroke="#6600CC" fill="none" opacity="0.75" cx="595.2" cy="325" r="110" stroke-width="100" stroke-dasharray="0" stroke-dashoffset="0"/>
+          <circle id="SoTOT" stroke="#1051E2" fill="none" opacity="0.75" cx="595.2" cy="325" r="110" stroke-width="100" stroke-dasharray="0" stroke-dashoffset="0"/>
+
+         <text transform="matrix(1 0 0 1 912.4448 211)" class="sb0 sb1 sb2">salute</text>
+       	 <text transform="matrix(1 0 0 1 912.4448 288.1626)" class="sb3 sb1 sb2">lavoro</text>
+       	 <text transform="matrix(1 0 0 1 912.4448 365.5)" class="sb4 sb1 sb2">individuale</text>
+       	 <text transform="matrix(1 0 0 1 912.4448 444.4375)" class="sb5 sb1 sb2">società</text>
+
+
+       	 <text transform="matrix(1 0 0 1 821.9502 213.9995)">
+           <tspan id="SaTOT.Text" class="sb6 sb7 sb8">00</tspan> <tspan class="sb6 sb7 sb10">%</tspan>
+         </text>
+
+       	 <text transform="matrix(1 0 0 1 821.9502 290.4883)">
+           <tspan id="LaTOT.Text" class="sb6 sb7 sb8">00</tspan><tspan class="sb6 sb7 sb10">%</tspan>
+         </text>
+
+       	 <text transform="matrix(1 0 0 1 821.9502 367.1504)">
+           <tspan id="InTOT.Text" class="sb6 sb7 sb8">00</tspan><tspan class="sb6 sb7 sb10">%</tspan>
+          </text>
+
+       	 <text transform="matrix(1 0 0 1 821.9502 445.4141)">
+           <tspan id="SoTOT.Text" class="sb6 sb7 sb8">00</tspan><tspan class="sb6 sb7 sb10">%</tspan>
+         </text>
+
+
+        </svg>
+      </div>
+      </div>
+
+    <div class="statEta-container sideTitles-container">
+      <p id="statEta-title" class="sideTitles">quantità di ansie <br/>complessive ordinate<br/>per età</p>
+      <div id="statEta-canvas" class="statCanvas">
+        <div class="profileGlobal-canvas">
+          <svg id="profileGlobal-selector" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="20 0 817.5 59.1">
+
+            <g>
+              <circle id="circleSelecSa" opacity="0.55" fill="white" stroke="#333333" stroke-width="3" stroke-miterlimit="10" cx="55" cy="33.2" r="8"/>
+              <text id="textSelecSa" transform="matrix(1 0 0 1 72.5127 38.8381)" opacity="0.55" fill="#333333" font-family="GT-America-Medium" font-size="18px">salute</text>
+              <rect onclick="toch()" onmouseenter="popGraphSa()" onmouseout="popAll()" x="30" y="14" fill="white" width="108" height="36" style="opacity:0"/>
+
+              <circle id="circleSelecLa" opacity="0.55" fill="white" stroke="#333333" stroke-width="3" stroke-miterlimit="10" cx="260" cy="33.2" r="8"/>
+              <text id="textSelecLa" transform="matrix(1 0 0 1 277.5128 38.8381)" opacity="0.55" fill="#333333" font-family="GT-America-Medium" font-size="18px">lavoro</text>
+              <rect onclick="toch()" onmouseenter="popGraphLa()" onmouseout="popAll()" x="235" y="14" fill="white" width="108" height="36" style="opacity:0"/>
+
+              <circle id="circleSelecSo" opacity="0.55" fill="white" stroke="#333333" stroke-width="3" stroke-miterlimit="10" cx="465" cy="33.2" r="8"/>
+                <text id="textSelecSo" transform="matrix(1 0 0 1 482.5128 38.8381)" opacity="0.55" fill="#333333" font-family="GT-America-Medium" font-size="18px">società</text>
+                <rect onclick="toch()" onmouseenter="popGraphSo()" onmouseout="popAll()" x="440" y="15.2" fill="white" width="118" height="36" style="opacity:0"/>
+
+              <circle id="circleSelecIn" opacity="0.55" fill="white" stroke="#333333" stroke-width="3" stroke-miterlimit="10" cx="659" cy="33.2" r="8"/>
+              <text id="textSelecIn" transform="matrix(1 0 0 1 676.5128 38.8381)" opacity="0.55" fill="#333333" font-family="GT-America-Medium" font-size="18px">individuale</text>
+              <rect onclick="toch()" onmouseenter="popGraphIn()" onmouseout="popAll()" x="627.5" y="15.2" fill="white" width="149" height="36" style="opacity:0"/>
+          </g>
+
+          </svg>
+          <svg id="svgProfileGlobal" viewBox="0 0 1900 570">
+            <!-- <image id="svgProfileGlobalBack" href="assets/graphBack.svg" width="1920" height="570"/> -->
+            <defs>
+              <style>.cls-1{fill:none;stroke:#e6e6e6;stroke-miterlimit:10;stroke-width:1.7883px;}.cls-11,.cls-12,.cls-2,.cls-3,.cls-4,.cls-6{isolation:isolate;}.cls-2,.cls-4,.cls-6{font-size:17.32px;}.cls-2{fill:#666;font-family:GT-America-Regular, GT America;}.cls-11,.cls-12,.cls-3,.cls-4,.cls-6{fill:#333;}.cls-3{opacity:0.87;}.cls-11,.cls-12,.cls-4,.cls-6{font-family:GT-America-Medium, GT America;}.cls-5{letter-spacing:-0.024em;}.cls-6{letter-spacing:-0.003em;}.cls-7{letter-spacing:0em;}.cls-8{letter-spacing:0.003em;}.cls-9{letter-spacing:-0.034em;}.cls-10{letter-spacing:0.001em;}.cls-11{font-size:20px;}.cls-12{font-size:18px;}.cls-13{letter-spacing:-0.01em;}.cls-14{letter-spacing:-0.016em;}.cls-15{letter-spacing:-0.009em;}
+              </style>
+            </defs>
+            <line class="cls-1" x1="35" y1="491.4" x2="1795.7" y2="491.4"/>
+            <line class="cls-1" x1="35" y1="403.4" x2="1795.7" y2="403.4"/>
+            <line class="cls-1" x1="35" y1="315.4" x2="1795.7" y2="315.4"/>
+            <line class="cls-1" x1="35" y1="227.4" x2="1795.7" y2="227.4"/>
+            <line class="cls-1" x1="35" y1="139.4" x2="1795.7" y2="139.4"/>
+            <line class="cls-1" x1="35" y1="51.4" x2="1795.7" y2="51.4"/>
+            <text class="cls-2" transform="translate(18.1375 494.75)">0</text>
+            <text class="cls-2" transform="translate(18.1375 403.36)">2</text>
+            <text class="cls-2" transform="translate(18.1375 311.97)">4</text>
+            <text class="cls-2" transform="translate(18.1375 220.58)">6</text>
+            <text class="cls-2" transform="translate(18.1375 129.1899)">8</text>
+            <text class="cls-2" transform="translate(11.9916 52.3482)">10</text>
+
+            <path id="graph"/>
+
+            <circle class="cls-3" cx="35.7" cy="544" r="6.2"/><circle class="cls-3" cx="55.7" cy="544" r="6.2"/><circle class="cls-3" cx="75.7" cy="544" r="6.2"/><circle class="cls-3" cx="95.7" cy="544" r="6.2"/><circle class="cls-3" cx="115.7" cy="544" r="6.2"/><circle class="cls-3" cx="135.7" cy="544" r="6.2"/><circle class="cls-3" cx="155.7" cy="544" r="6.2"/><circle class="cls-3" cx="175.7" cy="544" r="6.2"/><circle class="cls-3" cx="195.7" cy="544" r="6.2"/><circle class="cls-3" cx="215.7" cy="544" r="6.2"/><circle class="cls-3" cx="235.7" cy="544" r="6.2"/><circle class="cls-3" cx="255.7" cy="544" r="6.2"/><circle class="cls-3" cx="275.7" cy="544" r="6.2"/><circle class="cls-3" cx="295.7" cy="544" r="6.2"/><circle class="cls-3" cx="315.7" cy="544" r="6.2"/><circle class="cls-3" cx="335.7" cy="544" r="6.2"/><circle class="cls-3" cx="355.7" cy="544" r="6.2"/><circle class="cls-3" cx="375.7" cy="544" r="6.2"/><circle class="cls-3" cx="395.7" cy="544" r="6.2"/><circle class="cls-3" cx="415.7" cy="544" r="6.2"/><circle class="cls-3" cx="435.7" cy="544" r="6.2"/><circle class="cls-3" cx="455.7" cy="544" r="6.2"/><circle class="cls-3" cx="475.7" cy="544" r="6.2"/><circle class="cls-3" cx="495.7" cy="544" r="6.2"/><circle class="cls-3" cx="515.7" cy="544" r="6.2"/><circle class="cls-3" cx="535.7" cy="544" r="6.2"/><circle class="cls-3" cx="555.7" cy="544" r="6.2"/><circle class="cls-3" cx="575.7" cy="544" r="6.2"/><circle class="cls-3" cx="595.7" cy="544" r="6.2"/><circle class="cls-3" cx="615.7" cy="544" r="6.2"/><circle class="cls-3" cx="635.7" cy="544" r="6.2"/><circle class="cls-3" cx="655.7" cy="544" r="6.2"/><circle class="cls-3" cx="675.7" cy="544" r="6.2"/><circle class="cls-3" cx="695.7" cy="544" r="6.2"/><circle class="cls-3" cx="715.7" cy="544" r="6.2"/><circle class="cls-3" cx="735.7" cy="544" r="6.2"/><circle class="cls-3" cx="755.7" cy="544" r="6.2"/><circle class="cls-3" cx="775.7" cy="544" r="6.2"/><circle class="cls-3" cx="795.7" cy="544" r="6.2"/><circle class="cls-3" cx="815.7" cy="544" r="6.2"/><circle class="cls-3" cx="835.7" cy="544" r="6.2"/><circle class="cls-3" cx="855.7" cy="544" r="6.2"/><circle class="cls-3" cx="875.7" cy="544" r="6.2"/><circle class="cls-3" cx="895.7" cy="544" r="6.2"/><circle class="cls-3" cx="915.7" cy="544" r="6.2"/><circle class="cls-3" cx="935.7" cy="544" r="6.2"/><circle class="cls-3" cx="955.7" cy="544" r="6.2"/><circle class="cls-3" cx="975.7" cy="544" r="6.2"/><circle class="cls-3" cx="995.7" cy="544" r="6.2"/><circle class="cls-3" cx="1015.7" cy="544" r="6.2"/><circle class="cls-3" cx="1035.7" cy="544" r="6.2"/><circle class="cls-3" cx="1055.7" cy="544" r="6.2"/><circle class="cls-3" cx="1075.7" cy="544" r="6.2"/><circle class="cls-3" cx="1095.7" cy="544" r="6.2"/><circle class="cls-3" cx="1115.7" cy="544" r="6.2"/><circle class="cls-3" cx="1135.7" cy="544" r="6.2"/><circle class="cls-3" cx="1155.7" cy="544" r="6.2"/><circle class="cls-3" cx="1175.7" cy="544" r="6.2"/><circle class="cls-3" cx="1195.7" cy="544" r="6.2"/><circle class="cls-3" cx="1215.7" cy="544" r="6.2"/><circle class="cls-3" cx="1235.7" cy="544" r="6.2"/><circle class="cls-3" cx="1255.7" cy="544" r="6.2"/><circle class="cls-3" cx="1275.7" cy="544" r="6.2"/><circle class="cls-3" cx="1295.7" cy="544" r="6.2"/><circle class="cls-3" cx="1315.7" cy="544" r="6.2"/><circle class="cls-3" cx="1335.7" cy="544" r="6.2"/><circle class="cls-3" cx="1355.7" cy="544" r="6.2"/><circle class="cls-3" cx="1375.7" cy="544" r="6.2"/><circle class="cls-3" cx="1395.7" cy="544" r="6.2"/><circle class="cls-3" cx="1415.7" cy="544" r="6.2"/><circle class="cls-3" cx="1435.7" cy="544" r="6.2"/><circle class="cls-3" cx="1455.7" cy="544" r="6.2"/><circle class="cls-3" cx="1475.7" cy="544" r="6.2"/><circle class="cls-3" cx="1495.7" cy="544" r="6.2"/><circle class="cls-3" cx="1515.7" cy="544" r="6.2"/><circle class="cls-3" cx="1535.7" cy="544" r="6.2"/><circle class="cls-3" cx="1555.7" cy="544" r="6.2"/><circle class="cls-3" cx="1575.7" cy="544" r="6.2"/><circle class="cls-3" cx="1595.7" cy="544" r="6.2"/><circle class="cls-3" cx="1615.7" cy="544" r="6.2"/><circle class="cls-3" cx="1635.7" cy="544" r="6.2"/><circle class="cls-3" cx="1655.7" cy="544" r="6.2"/><circle class="cls-3" cx="1675.7" cy="544" r="6.2"/><circle class="cls-3" cx="1695.7" cy="544" r="6.2"/><circle class="cls-3" cx="1715.7" cy="544" r="6.2"/><circle class="cls-3" cx="1735.7" cy="544" r="6.2"/><circle class="cls-3" cx="1755.7" cy="544" r="6.2"/><circle class="cls-3" cx="1775.7" cy="544" r="6.2"/><circle class="cls-3" cx="1795.7" cy="544" r="6.2"/>
+            <text class="cls-4" transform="translate(26.3633 530.8167)">12</text><text class="cls-4" transform="translate(185.3832 530.8163)"><tspan class="cls-5">2</tspan><tspan x="9.3354" y="0">0</tspan></text><text class="cls-6" transform="translate(385.3313 530.879)">3<tspan class="cls-7" x="10.0454" y="0">0</tspan></text><text class="cls-4" transform="translate(585.8313 530.879)"><tspan class="cls-8">4</tspan><tspan x="9.9932" y="0">0</tspan></text><text class="cls-4" transform="translate(786.3313 530.879)">50</text><text class="cls-4" transform="translate(985.5813 530.879)">60</text><text class="cls-4" transform="translate(1186.498 530.879)"><tspan class="cls-9">7</tspan><tspan x="8.1924" y="0">0</tspan></text><text class="cls-4" transform="translate(1386.8314 530.8792)">80</text><text class="cls-4" transform="translate(1586.0813 530.879)">90</text><text class="cls-4" transform="translate(1787.8313 530.879)">1<tspan class="cls-10" x="7.1187" y="0">0</tspan><tspan x="18.3936" y="0">0</tspan></text><g id="Layer_12" data-name="Layer 12"><text class="cls-11" transform="translate(1829.9567 549)">e</text><text class="cls-11" transform="translate(1840.6566 549)">t</text><text class="cls-11" transform="translate(1848.0366 549)">à</text><text class="cls-12" transform="translate(-0.0002 21.55)">pu<tspan class="cls-13" x="21.2397" y="0">n</tspan><tspan class="cls-14" x="31.7339" y="0">t</tspan><tspan class="cls-15" x="38.1597" y="0">e</tspan><tspan x="47.8618" y="0">ggio</tspan></text></g>
+
+            <defs>
+              <linearGradient id="gradSa" x1="0%" y1="40%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(239, 10, 86);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(239, 10, 86);stop-opacity:0" />
+              </linearGradient>
+              <linearGradient id="gradIn" x1="0%" y1="40%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(0, 204, 204);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(0, 204, 204);stop-opacity:0" />
+              </linearGradient>
+              <linearGradient id="gradLa" x1="0%" y1="40%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(102, 0, 204);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(102, 0, 204);stop-opacity:0" />
+              </linearGradient>
+              <linearGradient id="gradSo" x1="0%" y1="40%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(16, 81, 226);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(16, 81, 226);stop-opacity:0" />
+              </linearGradient>
+              <linearGradient id="gradGray" x1="0%" y1="40%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(239, 247, 249);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(239, 247, 249);stop-opacity:0" />
+              </linearGradient>
+            </defs>
+          </svg>
+    </div>
+      </div>
+      </div>
+
+    <div class="statGenere-container sideTitles-container">
+      <p id="statGenere-title" class="sideTitles">quantità di ansie <br/>complessive ordinate<br/>per genere</p>
+      <div id="statGenere-canvas" class="statCanvas">
+        <?xml version="1.0" encoding="utf-8"?>
+        <!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+        <svg version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        	 viewBox="0 0 1200 650" style="enable-background:new 0 0 1200 650;" xml:space="preserve">
+        <style type="text/css">
+        	.st0{opacity:0.26;fill:none;stroke:#B3B3B3;stroke-width:3.8678;stroke-miterlimit:10;enable-background:new    ;}
+        	.st1{fill:none;}
+        	.st2{opacity:0.75;enable-background:new    ;}
+        	.st3{font-family:'GT-America-Bold';}
+        	.st4{font-size:36px;}
+        	.st5{opacity:0.5;fill:url(#SVGID_1_);enable-background:new    ;}
+        	.st6{opacity:0.5;fill:url(#SVGID_2_);enable-background:new    ;}
+        	.st7{opacity:0.5;fill:url(#SVGID_3_);enable-background:new    ;}
+        	.st8{opacity:0.5;fill:url(#SVGID_4_);enable-background:new    ;}
+        	.st9{opacity:0.5;fill:url(#SVGID_5_);enable-background:new    ;}
+        	.st10{opacity:0.5;fill:url(#SVGID_6_);enable-background:new    ;}
+        	.st11{opacity:0.5;fill:url(#SVGID_7_);enable-background:new    ;}
+        	.st12{opacity:0.5;fill:url(#SVGID_8_);enable-background:new    ;}
+        	.st13{fill:#333333;}
+        	.st14{font-size:29px;}
+        	.st15{font-size:16px;}
+        	.st16{fill:#666666;}
+        	.st17{opacity:0.75;fill:#333333;enable-background:new    ;}
+        	.st18{opacity:0.35;fill:none;stroke:#333333;stroke-width:3;stroke-miterlimit:10;enable-background:new    ;}
+        	.st19{font-family:'GT-America-Medium';}
+        	.st20{font-size:21px;}
+        	.st21{opacity:0.75;}
+        	.st22{opacity:0.35;fill:#7C8189;enable-background:new    ;}
+        	.st23{opacity:0.4222;fill:#7C8189;enable-background:new    ;}
+        	.st24{opacity:0.4944;fill:#7C8189;enable-background:new    ;}
+        	.st25{opacity:0.5667;fill:#7C8189;enable-background:new    ;}
+        	.st26{opacity:0.6389;fill:#7C8189;enable-background:new    ;}
+        	.st27{opacity:0.7111;fill:#7C8189;enable-background:new    ;}
+        	.st28{opacity:0.7833;fill:#7C8189;enable-background:new    ;}
+        	.st29{opacity:0.8556;fill:#7C8189;enable-background:new    ;}
+        	.st30{opacity:0.9278;fill:#7C8189;enable-background:new    ;}
+        	.st31{fill:#7C8189;}
+          .st31{opacity:0.75;}
+          .st32{opacity:0.35;fill:#7C8189;enable-background:new;}
+
+          .sc0{opacity:0.75;enable-background:new    ;}
+          .sc1{font-family:'GT-America-Bold';}
+          .sc2{font-size:36px;}
+          .sc3{fill:#EF0A56;}
+          .sc4{font-family:'GT-America-Medium';}
+          .sc5{font-size:18px;}
+          .sc6{fill:#6600CC;}
+          .sc7{fill:#00CCCC;}
+          .sc8{fill:#1051E2;}
+          .sc9{fill:#333333;}
+          .sc10{font-size:26px;}
+          .sc11{letter-spacing:1;}
+          .sc12{font-size:14px;}
+        </style>
+
+        <circle id="circle.f.Sa" stroke="#EF0A56" fill="none" opacity="0.75" cx="1053.2" cy="462.6" r="82.8" stroke-width="66" stroke-dasharray="0" stroke-dashoffset="0"/>
+        <circle id="circle.f.In" stroke="#00CCCC" fill="none" opacity="0.75" cx="1053.2" cy="462.6" r="82.8" stroke-width="66" stroke-dasharray="0" stroke-dashoffset="0"/>
+        <circle id="circle.f.La" stroke="#6600CC" fill="none" opacity="0.75" cx="1053.2" cy="462.6" r="82.8" stroke-width="66" stroke-dasharray="0" stroke-dashoffset="0"/>
+        <circle id="circle.f.So" stroke="#1051E2" fill="none" opacity="0.75" cx="1053.2" cy="462.6" r="82.8" stroke-width="66" stroke-dasharray="0" stroke-dashoffset="0"/>
+
+        <circle id="circle.m.Sa" stroke="#EF0A56" fill="none" opacity="0.75" cx="1053.2" cy="139.6" r="82.8" stroke-width="66" stroke-dasharray="0" stroke-dashoffset="0"/>
+        <circle id="circle.m.In" stroke="#00CCCC" fill="none" opacity="0.75" cx="1053.2" cy="139.6" r="82.8" stroke-width="66" stroke-dasharray="0" stroke-dashoffset="0"/>
+        <circle id="circle.m.La" stroke="#6600CC" fill="none" opacity="0.75" cx="1053.2" cy="139.6" r="82.8" stroke-width="66" stroke-dasharray="0" stroke-dashoffset="0"/>
+        <circle id="circle.m.So" stroke="#1051E2" fill="none" opacity="0.75" cx="1053.2" cy="139.6" r="82.8" stroke-width="66" stroke-dasharray="0" stroke-dashoffset="0"/>
+
+        <circle class="st0" cx="1053.2" cy="139.6" r="130"/>
+        <circle class="st0" cx="1053.2" cy="462.6" r="130"/>
+
+        <text transform="matrix(1 0 0 1 751.1274 65.4743)" class="sc0 sc1 sc2">maschi</text>
+        <text transform="matrix(1 0 0 1 725.6597 379.1257)" class="sc0 sc1 sc2">femmine</text>
+        <text transform="matrix(1 0 0 1 765.8101 102.8497)" class="sc3 sc4 sc5">salute</text>
+        <text transform="matrix(1 0 0 1 765.6479 143.8497)" class="sc6 sc4 sc5">lavoro</text>
+        <text transform="matrix(1 0 0 1 725.2212 184.8497)" class="sc7 sc4 sc5">individuale</text>
+        <text transform="matrix(1 0 0 1 756.6304 225.8497)" class="sc8 sc4 sc5">società</text>
+
+<text transform="matrix(1 0 0 1 827.7939 104.8496)">
+        <tspan id="text.%.Sa.m"  class="sc9 sc1 sc10">00</tspan> <tspan class="sc9 sc1 sc5">%</tspan>
+</text>
+
+<text transform="matrix(1 0 0 1 827.7939 145.4)">
+        <tspan id="text.%.La.m"  class="sc9 sc1 sc10">00</tspan> <tspan class="sc9 sc1 sc5">%</tspan>
+</text>
+
+<text transform="matrix(1 0 0 1 827.7939 185.9504)">
+        <tspan id="text.%.In.m" class="sc9 sc1 sc10">00</tspan> <tspan class="sc9 sc1 sc5">%</tspan>
+</text>
+
+<text transform="matrix(1 0 0 1 827.7939 226.5008)">
+        <tspan id="text.%.So.m" class="sc9 sc1 sc10">00</tspan> <tspan class="sc9 sc1 sc5">%</tspan>
+</text>
+
+
+        <text transform="matrix(1 0 0 1 765.8101 421.0001)" class="sc3 sc4 sc5">salute</text>
+        <text transform="matrix(1 0 0 1 765.6479 462.0001)" class="sc6 sc4 sc5">lavoro</text>
+        <text transform="matrix(1 0 0 1 725.2212 503.0001)" class="sc7 sc4 sc5">individuale</text>
+        <text transform="matrix(1 0 0 1 756.6304 544.0001)" class="sc8 sc4 sc5">società</text>
+
+
+        <text transform="matrix(1 0 0 1 827.7939 423)">
+                <tspan id="text.%.Sa.f" class="sc9 sc1 sc10">00</tspan> <tspan class="sc9 sc1 sc5">%</tspan>
+        </text>
+
+        <text transform="matrix(1 0 0 1 827.7939 463.5504)">
+                <tspan id="text.%.La.f" class="sc9 sc1 sc10">00</tspan> <tspan class="sc9 sc1 sc5">%</tspan>
+        </text>
+
+        <text transform="matrix(1 0 0 1 827.7939 504.1008)">
+                <tspan id="text.%.In.f" class="sc9 sc1 sc10">00</tspan> <tspan class="sc9 sc1 sc5">%</tspan>
+        </text>
+
+        <text transform="matrix(1 0 0 1 827.7939 544.6512)">
+                <tspan id="text.%.So.f" class="sc9 sc1 sc10">00</tspan> <tspan class="sc9 sc1 sc5">%</tspan>
+        </text>
+
+
+        <path class="st12" d="M492.4,615.6H86c6.3,0,5-1.3,5-3v-36c0-1.7,1.3-3-5-3h406.3c9.7,0,11,1.3,11,3v36
+C503.4,614.3,502,615.6,492.4,615.6z"/>
+
+        <rect fill="#DAE7ED" opacity="0.5" x="90.8" y="23.6" rx="5.8" ry="5.8" width="412" height="42" />
+        <rect fill="#DAE7ED" opacity="0.5" x="90.8" y="75.6" rx="5.8" ry="5.8" width="412" height="42" />
+        <rect fill="#DAE7ED" opacity="0.5" x="90.8" y="192.6" rx="5.8" ry="5.8" width="412" height="42" />
+        <rect fill="#DAE7ED" opacity="0.5" x="90.8" y="244.6" rx="5.8" ry="5.8" width="412" height="42" />
+        <rect fill="#DAE7ED" opacity="0.5" x="90.8" y="357.1" rx="5.8" ry="5.8" width="412" height="42" />
+        <rect fill="#DAE7ED" opacity="0.5" x="90.8" y="409.6" rx="5.8" ry="5.8" width="412" height="42" />
+        <rect fill="#DAE7ED" opacity="0.5" x="90.8" y="521.6" rx="5.8" ry="5.8" width="412" height="42" />
+        <rect fill="#DAE7ED" opacity="0.5" x="90.8" y="573.6" rx="5.8" ry="5.8" width="412" height="42" />
+
+        <rect id="m.Sa" fill="#EF0A56" opacity="0.75" x="90.8" y="23.6" rx="5.8" ry="5.8" width="412" height="42" />
+        <rect id="f.Sa" fill="#EF0A56" opacity="0.75" x="90.8" y="75.6" rx="5.8" ry="5.8" width="412" height="42" />
+        <rect id="m.La" fill="#6600CC" opacity="0.75" x="90.8" y="192.6" rx="5.8" ry="5.8" width="412" height="42" />
+        <rect id="f.La" fill="#6600CC" opacity="0.75" x="90.8" y="244.6" rx="5.8" ry="5.8" width="412" height="42" />
+        <rect id="m.So" fill="#1051E2" opacity="0.75" x="90.8" y="357.1" rx="5.8" ry="5.8" width="412" height="42" />
+        <rect id="f.So" fill="#1051E2" opacity="0.75" x="90.8" y="409.6" rx="5.8" ry="5.8" width="412" height="42" />
+        <rect id="m.In" fill="#00CCCC" opacity="0.75" x="90.8" y="521.6" rx="5.8" ry="5.8" width="412" height="42" />
+        <rect id="f.In" fill="#00CCCC" opacity="0.75" x="90.8" y="573.6" rx="5.8" ry="5.8" width="412" height="42" />
+
+        <rect x="527.2" y="33" class="st1" width="64.1" height="22.1"/>
+
+        <text transform="matrix(1 0 0 1 527.2231 54.0723)">
+          <tspan id="m.Sa.text" class="st13 st3 st14">0</tspan>
+          <tspan class="st13 st3 st15">/10</tspan>
+        </text>
+
+        <text transform="matrix(1 0 0 1 527.2231 107.0723)">
+          <tspan id="f.Sa.text" class="st13 st3 st14">0</tspan>
+          <tspan class="st13 st3 st15">/10</tspan>
+        </text>
+
+        <text transform="matrix(1 0 0 1 527.2231 223.0723)">
+          <tspan id="m.La.text" class="st13 st3 st14">0</tspan>
+          <tspan class="st13 st3 st15">/10</tspan>
+        </text>
+
+        <text transform="matrix(1 0 0 1 527.2231 276.0723)">
+          <tspan id="f.La.text" class="st13 st3 st14">0</tspan>
+          <tspan class="st13 st3 st15">/10</tspan>
+        </text>
+
+        <text transform="matrix(1 0 0 1 527.2231 389.0723)">
+          <tspan id="m.So.text" class="st13 st3 st14">0</tspan>
+          <tspan class="st13 st3 st15">/10</tspan>
+        </text>
+
+        <text transform="matrix(1 0 0 1 527.2231 442.0723)">
+          <tspan id="f.So.text" class="st13 st3 st14">0</tspan>
+          <tspan class="st13 st3 st15">/10</tspan>
+        </text>
+
+        <text transform="matrix(1 0 0 1 527.2231 551.0723)">
+          <tspan id="m.In.text" class="st13 st3 st14">0</tspan>
+          <tspan class="st13 st3 st15">/10</tspan>
+        </text>
+
+        <text transform="matrix(1 0 0 1 527.2231 604.0723)">
+          <tspan id="f.In.text" class="st13 st3 st14">0</tspan>
+          <tspan class="st13 st3 st15">/10</tspan>
+        </text>
+
+
+        <path class="st18" d="M40.8,13.6h-9.7c-7.9,0-14.3,6.4-14.3,14.3v84.3c0,7.9,6.4,14.3,14.3,14.3h9.7"/>
+        <path class="st18" d="M40.8,183.6h-9.7c-7.9,0-14.3,6.4-14.3,14.3v84.3c0,7.9,6.4,14.3,14.3,14.3h9.7"/>
+        <path class="st18" d="M40.8,349.6h-9.7c-7.9,0-14.3,6.4-14.3,14.3v84.3c0,7.9,6.4,14.3,14.3,14.3h9.7"/>
+        <path class="st18" d="M40.8,511.6h-9.7c-7.9,0-14.3,6.4-14.3,14.3v84.3c0,7.9,6.4,14.3,14.3,14.3h9.7"/>
+        <rect x="49.2" y="533.6" class="st1" width="30" height="24.7"/>
+        <text transform="matrix(1 0 0 1 60.3608 548.8496)" class="st2 st19 st20">M</text>
+        <rect x="46.2" y="585.6" class="st1" width="30" height="24.7"/>
+        <text transform="matrix(1 0 0 1 63.9126 600.8496)" class="st2 st19 st20">F</text>
+        <rect x="49.2" y="367.6" class="st1" width="30" height="24.7"/>
+        <text transform="matrix(1 0 0 1 60.3608 382.8496)" class="st2 st19 st20">M</text>
+        <rect x="46.2" y="419.6" class="st1" width="30" height="24.7"/>
+        <text transform="matrix(1 0 0 1 63.9126 434.8496)" class="st2 st19 st20">F</text>
+        <rect x="49.2" y="204.6" class="st1" width="30" height="24.7"/>
+        <text transform="matrix(1 0 0 1 60.3608 219.8496)" class="st2 st19 st20">M</text>
+        <rect x="46.2" y="256.6" class="st1" width="30" height="24.7"/>
+        <text transform="matrix(1 0 0 1 63.9126 271.8496)" class="st2 st19 st20">F</text>
+        <rect x="49.2" y="35.6" class="st1" width="30" height="24.7"/>
+        <text transform="matrix(1 0 0 1 60.3608 50.8496)" class="st2 st19 st20">M</text>
+        <rect x="46.2" y="87.6" class="st1" width="30" height="24.7"/>
+        <text transform="matrix(1 0 0 1 63.9126 102.8496)" class="st2 st19 st20">F</text>
+        <g class="st31">
+        		<circle class="st32" cx="91.8" cy="139.6" r="3.8"/>
+        		<circle class="st32" cx="133" cy="139.6" r="3.8"/>
+        		<circle class="st32" cx="174.2" cy="139.6" r="3.8"/>
+        		<circle class="st32" cx="215.4" cy="139.6" r="3.8"/>
+        		<circle class="st32" cx="256.6" cy="139.6" r="3.8"/>
+        		<circle class="st32" cx="297.8" cy="139.6" r="3.8"/>
+        		<circle class="st32" cx="339" cy="139.6" r="3.8"/>
+        		<circle class="st32" cx="380.2" cy="139.6" r="3.8"/>
+        		<circle class="st32" cx="421.4" cy="139.6" r="3.8"/>
+        		<circle class="st32" cx="462.6" cy="139.6" r="3.8"/>
+        		<circle class="st32" cx="503.8" cy="139.6" r="3.8"/>
+        </g>
+        <g class="st31">
+        	<circle class="st32" cx="91.8" cy="308.6" r="3.8"/>
+        	<circle class="st32" cx="133" cy="308.6" r="3.8"/>
+        	<circle class="st32" cx="174.2" cy="308.6" r="3.8"/>
+        	<circle class="st32" cx="215.4" cy="308.6" r="3.8"/>
+        	<circle class="st32" cx="256.6" cy="308.6" r="3.8"/>
+        	<circle class="st32" cx="297.8" cy="308.6" r="3.8"/>
+        	<circle class="st32" cx="339" cy="308.6" r="3.8"/>
+        	<circle class="st32" cx="380.2" cy="308.6" r="3.8"/>
+        	<circle class="st32" cx="421.4" cy="308.6" r="3.8"/>
+        	<circle class="st32" cx="462.6" cy="308.6" r="3.8"/>
+        	<circle class="st32" cx="503.8" cy="308.6" r="3.8"/>
+        </g>
+        <g class="st31">
+        		<circle class="st32" cx="91.8" cy="472.6" r="3.8"/>
+        		<circle class="st32" cx="133" cy="472.6" r="3.8"/>
+        		<circle class="st32" cx="174.2" cy="472.6" r="3.8"/>
+        		<circle class="st32" cx="215.4" cy="472.6" r="3.8"/>
+        		<circle class="st32" cx="256.6" cy="472.6" r="3.8"/>
+        		<circle class="st32" cx="297.8" cy="472.6" r="3.8"/>
+        		<circle class="st32" cx="339" cy="472.6" r="3.8"/>
+        		<circle class="st32" cx="380.2" cy="472.6" r="3.8"/>
+        		<circle class="st32" cx="421.4" cy="472.6" r="3.8"/>
+        		<circle class="st32" cx="462.6" cy="472.6" r="3.8"/>
+        		<circle class="st32" cx="503.8" cy="472.6" r="3.8"/>
+        </g>
+
+        <g class="st31">
+        		<circle class="st32" cx="91.8" cy="636.6" r="3.8"/>
+        		<circle class="st32" cx="133" cy="636.6" r="3.8"/>
+        		<circle class="st32" cx="174.2" cy="636.6" r="3.8"/>
+        		<circle class="st32" cx="215.4" cy="636.6" r="3.8"/>
+        		<circle class="st32" cx="256.6" cy="636.6" r="3.8"/>
+        		<circle class="st32" cx="297.8" cy="636.6" r="3.8"/>
+        		<circle class="st32" cx="339" cy="636.6" r="3.8"/>
+        		<circle class="st32" cx="380.2" cy="636.6" r="3.8"/>
+        		<circle class="st32" cx="421.4" cy="636.6" r="3.8"/>
+        		<circle class="st32" cx="462.6" cy="636.6" r="3.8"/>
+        		<circle class="st32" cx="503.8" cy="636.6" r="3.8"/>
+        </g>
+        </svg>
+
+      </div>
+      </div>
+      <a href="#bottom" id="pageScroller">
+      <div class="arrowDown-container" id="arrowDown">
+      <svg id="arrowDown-svg" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 80 80">
+        <polyline id="arrowDown-line" points="3,3,30,20,57,3"/>
+        <polyline id="arrowUp-line" class="hideOpacity" points="3,20,30,3,57,20"/>
+      </svg>
+      </div>
+    </a>
+    </div>
+
+    <div id="bottom"></div>
+    <script src="graphStat.js" type="text/javascript"></script>
+    <script rel="preload" src="statScript.js"></script>
+    <script src="graphGlobal.js" type="text/javascript"></script>
+  </body>
+</html>

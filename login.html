@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>accesso - ansiocromo</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="loginStyle.css" rel="stylesheet" type="text/CSS"/>
+    <link rel="preload" as="image" href="./assets/accImg.png">
+    <script rel="preload">
+    //REDIRECT A STAT
+      if(localStorage.getItem('_dbCodice')!==null) {
+      window.location.href="risultati";
+    }
+    </script>
+    <link rel="preload" href="/fonts/GT-America-Bold.woff" as="font" />
+    <link rel="preload" href="/fonts/GT-America-Medium.woff" as="font" />
+  </head>
+  <body>
+    <!-- mobile-->
+    <div class="mobile-navbar">
+      <div class="ham-button"  onclick="toggleNavbar()">
+        <span class="menu-txt" id="menuTxt">menu</span>
+        <div class="ham-icon" id="hamIcon">
+        <div class="ham-bar bar1" id="hamBar1"></div>
+        <div class="ham-bar bar2" id="hamBar2"></div>
+        <div class="ham-bar bar3" id="hamBar3"></div>
+      </div>
+      <div class="close-icon hideOpacity" id="closeIcon">
+      <div class="close-bar cbar1" id="hamBar1"></div>
+      <div class="close-bar cbar2" id="hamBar2"></div>
+    </div>
+    </div>
+      <div class="navbar-menu closed" id="navbarMenu">
+        <a href="./index" class="headerTitlesM">home</a>
+        <a href="./login" class="headerTitlesM">risultati</a>
+        <a href="./stat" class="headerTitlesM">statistiche</a>
+        <a href="./about" class="headerTitlesM">chi siamo</a>
+      </div>
+    </div>
+    <!-- mobile end-->
+    <div class="navbar-parent">
+    <div class="mainhead">
+      <a href="./index" class="headerTitles">home</a>
+      <a href="./login" class="headerTitles">risultati</a>
+      <a href="./stat" class="headerTitles">statistiche</a>
+      <a href="./about" class="headerTitles">chi siamo</a>
+    </div>
+    </div>
+      <div class="access-container">
+        <img src="./assets/accImg.png" class="accImg"></img>
+        <p id="accTxt">inserisci il codice presente sul tuo esame:</p>
+        <input type="text" placeholder="codice utente" id="accCode" maxlength="7"></input>
+        <button id="accSubmit">invia</button>
+      </div>
+
+
+
+    <script rel="preload" src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script rel="preload" src="loginScript.js"></script>
+  </body>
+</html>

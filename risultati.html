@@ -1,0 +1,248 @@
+<html>
+  <head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>risultati - ansiocromo</title>
+    <script rel="preload" src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+    <link rel="stylesheet" href="risultatiStyle.css" type="text/css">
+    <link rel="preload" href="./fonts/GT-America-Bold.woff" as="font" />
+    <link rel="preload" href="./fonts/GT-America-Medium.woff" as="font" />
+    <script rel="preload">
+
+    if(localStorage.getItem('_dbCodice')===null) {
+    window.location.href="login";
+  }
+    </script>
+  </head>
+
+  <body>
+    <!-- <p id="txt-test"></p>
+    <button id="prfLogout">Logout</button> -->
+    <!-- mobile-->
+    <div class="mobile-navbar">
+      <div class="ham-button"  onclick="toggleNavbar()">
+        <span class="menu-txt" id="menuTxt">menu</span>
+        <div class="ham-icon" id="hamIcon">
+        <div class="ham-bar bar1" id="hamBar1"></div>
+        <div class="ham-bar bar2" id="hamBar2"></div>
+        <div class="ham-bar bar3" id="hamBar3"></div>
+      </div>
+      <div class="close-icon hideOpacity" id="closeIcon">
+      <div class="close-bar cbar1" id="hamBar1"></div>
+      <div class="close-bar cbar2" id="hamBar2"></div>
+    </div>
+    </div>
+      <div class="navbar-menu closed" id="navbarMenu">
+        <a href="./index" class="headerTitlesM">home</a>
+        <a href="./login" class="headerTitlesM">risultati</a>
+        <a href="./stat" class="headerTitlesM">statistiche</a>
+        <a href="./about" class="headerTitlesM">chi siamo</a>
+        <a href="" class="headerTitlesM" id="logoutTxtM">logout</a>
+      </div>
+    </div>
+    <!-- mobile end-->
+
+    <div class="navbar-parent">
+    <div class="mainhead">
+      <a href="" class="headerTitles" id="logoutTxt">logout</a>
+      <a href="./index" class="headerTitles">home</a>
+      <a href="./login" class="headerTitles">risultati</a>
+      <a href="./stat" class="headerTitles">statistiche</a>
+      <a href="./about" class="headerTitles">chi siamo</a>
+    </div>
+  </div>
+    <div class="container-1">
+    <div class="profilePersonal-container">
+      <div class="personalTitles-container">
+        <p id="punteggio-title">punteggio<br/>personale</p>
+        <p id="userInfo1" class="hideOpacity blur"></p>
+      </div>
+      <div class="profilePersonal-canvas">
+        <svg id="profilePersonal-svg" viewBox="-300 0 2000 800">
+          <style type="text/css">
+            .st0{fill:none;stroke:#CCCCCC;stroke-width:2.305;stroke-miterlimit:10;}
+            .st1{fill:none;stroke:#999999;stroke-width:2.802;stroke-miterlimit:10;}
+
+            .st4{fill:#333333;}
+          	.st5{font-family:GT-America-Medium, GT-America-Regular;}
+          	.st6{font-size:72.9031px;}
+          	.st7{font-size:20.4129px;}
+          	.st8{font-size:32px;}
+
+          </style>
+          <g>
+            <circle class="st0" cx="913.2" cy="280.7" r="117"/>
+            <circle class="st0" cx="913.2" cy="280.7" r="87.6"/>
+            <circle class="st0" cx="913.2" cy="280.7" r="59"/>
+            <circle class="st0" cx="913.2" cy="280.7" r="34"/>
+            <circle class="st0" cx="626.2" cy="280.7" r="117"/>
+            <circle class="st0" cx="626.2" cy="280.7" r="87.6"/>
+            <circle class="st0" cx="626.2" cy="280.7" r="59"/>
+            <circle class="st0" cx="626.2" cy="280.7" r="34"/>
+            <circle class="st0" cx="773.7" cy="519.3" r="117"/>
+            <circle class="st0" cx="773.7" cy="519.3" r="87.6"/>
+            <circle class="st0" cx="773.7" cy="519.3" r="59"/>
+            <circle class="st0" cx="773.7" cy="519.3" r="34"/>
+            <circle class="st0" cx="486.7" cy="519.3" r="117"/>
+            <circle class="st0" cx="486.7" cy="519.3" r="87.6"/>
+            <circle class="st0" cx="486.7" cy="519.3" r="59"/>
+            <circle class="st0" cx="486.7" cy="519.3" r="34"/>
+            <path class="st0" d="M626.2,428.8c11.4,0,22.6-1.3,33.3-3.8c-13.6,16.5-23.8,36-29.2,57.4c-5.3-20.6-14.9-39.5-27.7-55.6
+              C610.2,428.2,618.1,428.8,626.2,428.8z M773.7,371.2c-11.4,0-22.6,1.3-33.3,3.8c13.6-16.5,23.8-36,29.2-57.4
+              c5.3,20.6,14.9,39.5,27.7,55.6C789.7,371.8,781.8,371.2,773.7,371.2z M372.5,425.1c-21.1,25.6-33.8,58.4-33.8,94.2
+              c0,81.8,66.3,148.1,148.1,148.1c69.1,0,127.1-47.3,143.5-111.3c16.4,64,74.4,111.3,143.5,111.3c81.8,0,148.1-66.3,148.1-148.1
+              c0-34.9-12.1-67.1-32.3-92.4c7.7,1.2,15.6,1.9,23.7,1.9c81.8,0,148.1-66.3,148.1-148.1s-66.3-148.1-148.1-148.1
+              c-69.1,0-127.1,47.3-143.5,111.3c-16.4-64-74.4-111.3-143.5-111.3s-127.2,47.3-143.6,111.3c-9.8,33.1,0,73.6,0,73.6
+              c5.3,20.6,14.9,39.5,27.7,55.6c-7.7-1.2-15.6-1.9-23.7-1.9c-11.4,0-22.6,1.3-33.3,3.8C391.7,394,372.5,425.1,372.5,425.1z"/>
+            <path class="st1" d="M630.2,628c-32.9,43.3-84.9,71.3-143.5,71.3c-99.4,0-180-80.6-180-180c0-89.2,64.9-163.3,150.1-177.5
+              c-6.9-19.1-10.6-39.6-10.6-61.1c0-99.4,80.6-180,180-180c58.6,0,110.6,28,143.5,71.3c32.9-43.3,84.9-71.3,143.5-71.3
+              c99.4,0,180,80.6,180,180c0,89.2-64.9,163.3-150.1,177.5c6.9,19.1,10.6,39.6,10.6,61.1c0,99.4-80.6,180-180,180
+              C715.1,699.3,663.1,671.3,630.2,628z"/>
+          </g>
+
+          <circle id="circleSa" Cx="913.15" Cy="280.7" r="0" stroke-width="1" fill="#EF0A56" opacity="0.70" onmouseenter="popSaPers()" onmouseout="popAllPers()"/>
+          <g id="SaText" class="circleOpacity">
+          <line id="circleSaLine" x1="0" y1="0" x2="0" y2="0" stroke-width="3" stroke="#EF0A56" opacity="0.70" onmouseenter="popSaPers()" onmouseout="popAllPers()"/>
+            <text id="circleSaText" transform="translate(0 0)" class="st4 st5 st8">salute</text>
+            <text id="circleSaTextValori" transform="translate(0 0)">
+              <tspan id="circleSaTextVal" x="0" y="0" class="st4 st5 st6">0</tspan>
+              <tspan tspan x="42.5" y="0" class="st4 st5 st7">/10</tspan>
+            </text>
+           </g>
+
+
+          <circle id="circleIn" Cx="486.7" Cy="519.3px" r="0" stroke-width="1" fill="#00CCCC" opacity="0.70" onmouseenter="popInPers()" onmouseout="popAllPers()"/>
+          <g id="InText" class="circleOpacity">
+            <line id="circleInLine" x1="0" y1="0" x2="0" y2="0" stroke-width="3" stroke="#00CCCC" opacity="0.70" onmouseenter="popInPers()" onmouseout="popAllPers()"/>
+            <text text-anchor="end" id="circleInText" transform="translate(0 0)" class="st4 st5 st8">individuo</text>
+            <text text-anchor="end" id="circleInTextValori" transform="translate(0 0)">
+              <tspan id="circleInTextVal" x="0" y="0" class="st4 st5 st6">0</tspan>
+              <tspan x="42.5" y="0" class="st4 st5 st7">/10</tspan>
+            </text>
+          </g>
+
+
+          <circle id="circleLa" Cx="626.15" Cy="280.7" r="0" stroke-width="1" fill="#6600CC" opacity="0.70" onmouseenter="popLaPers()" onmouseout="popAllPers()"/>
+          <g id="LaText" class="circleOpacity">
+            <line id="circleLaLine" x1="0" y1="0" x2="0" y2="0" stroke-width="3" stroke="#6600CC" opacity="0.70" onmouseenter="popLaPers()" onmouseout="popAllPers()"/>
+            <text text-anchor="end" id="circleLaText" transform="translate(0 0)" class="st4 st5 st8">lavoro</text>
+            <text text-anchor="end" id="circleLaTextValori" transform="translate(0 0)">
+              <tspan id="circleLaTextVal" x="0" y="0" class="st4 st5 st6">0</tspan>
+              <tspan x="42.5" y="0" class="st4 st5 st7">/10</tspan>
+            </text>
+          </g>
+
+          <circle id="circleSo" Cx="773.7" Cy="519.3" r="0" stroke-width="1" fill="#1051E2" opacity="0.70" onmouseenter="popSoPers()" onmouseout="popAllPers()"/>
+          <g id="SoText" class="circleOpacity">
+            <line id="circleSoLine" x1="0" y1="0" x2="0" y2="0" stroke-width="3" stroke="#1051E2" opacity="0.70" onmouseenter="popSoPers()" onmouseout="popAllPers()"/>
+            <text id="circleSoText" transform="translate(0 0)" class="st4 st5 st8">società</text>
+            <text id="circleSoTextValori" transform="translate(0 0)">
+              <tspan id="circleSoTextVal" x="0" y="0" class="st4 st5 st6">0</tspan>
+              <tspan tspan x="42.5" y="0" class="st4 st5 st7">/10</tspan>
+            </text>
+          </g>
+
+          <defs>
+            <radialGradient id="circleGray" x1="0%" y1="0%" x2="0%" y2="90%">
+              <stop offset="85%" style="stop-color:rgb(218, 231, 237);stop-opacity:1" />
+              <stop offset="100%" style="stop-color:rgb(218, 231, 237);stop-opacity:0" />
+            </radialGradient>
+          </defs>
+      </svg>
+      </div>
+      </div>
+      <a href="#bottom" id="pageScroller">
+      <div class="arrowDown-container" id="arrowDown">
+        <p id="arrowDown-txt">scorri per vedere la tua posizione globale</p>
+      <svg id="arrowDown-svg" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 80 80">
+        <polyline id="arrowDown-line" points="3,3,30,20,57,3"/>
+      </svg>
+      </div>
+    </a>
+    </div>
+    <div class="container-2">
+      <div class="profileGlobal-container">
+        <div class="globalTitles-container">
+          <p id="posGlobale-title">posizione<br/>globale</p>
+          <p id="userInfo2" class="hideOpacity blur"></p>
+        </div>
+        <div class="profileGlobal-canvas">
+          <svg id="profileGlobal-selector" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 817.5 59.1">
+
+            <g>
+          		<circle id="circleSelecSa" opacity="0.55" fill="white" stroke="#333333" stroke-width="3" stroke-miterlimit="10" cx="55" cy="33.2" r="8"/>
+          		<text id="textSelecSa" transform="matrix(1 0 0 1 72.5127 38.8381)" opacity="0.55" fill="#333333" font-family="GT-America-Medium" font-size="18px">salute</text>
+              <rect onclick="toch()" onmouseenter="popGraphSa()" onmouseout="popAll()" x="30" y="14" fill="white" width="108" height="36" style="opacity:0"/>
+
+          		<circle id="circleSelecLa" opacity="0.55" fill="white" stroke="#333333" stroke-width="3" stroke-miterlimit="10" cx="260" cy="33.2" r="8"/>
+          		<text id="textSelecLa" transform="matrix(1 0 0 1 277.5128 38.8381)" opacity="0.55" fill="#333333" font-family="GT-America-Medium" font-size="18px">lavoro</text>
+              <rect onclick="toch()" onmouseenter="popGraphLa()" onmouseout="popAll()" x="235" y="14" fill="white" width="108" height="36" style="opacity:0"/>
+
+          		<circle id="circleSelecSo" opacity="0.55" fill="white" stroke="#333333" stroke-width="3" stroke-miterlimit="10" cx="465" cy="33.2" r="8"/>
+          			<text id="textSelecSo" transform="matrix(1 0 0 1 482.5128 38.8381)" opacity="0.55" fill="#333333" font-family="GT-America-Medium" font-size="18px">società</text>
+                <rect onclick="toch()" onmouseenter="popGraphSo()" onmouseout="popAll()" x="440" y="15.2" fill="white" width="118" height="36" style="opacity:0"/>
+
+          		<circle id="circleSelecIn" opacity="0.55" fill="white" stroke="#333333" stroke-width="3" stroke-miterlimit="10" cx="659" cy="33.2" r="8"/>
+          		<text id="textSelecIn" transform="matrix(1 0 0 1 676.5128 38.8381)" opacity="0.55" fill="#333333" font-family="GT-America-Medium" font-size="18px">individuale</text>
+              <rect onclick="toch()" onmouseenter="popGraphIn()" onmouseout="popAll()" x="627.5" y="15.2" fill="white" width="149" height="36" style="opacity:0"/>
+          </g>
+
+          </svg>
+          <svg id="svgProfileGlobal" viewBox="0 0 1900 570">
+            <!-- <image id="svgProfileGlobalBack" href="assets/graphBack.svg" width="1920" height="570"/> -->
+            <defs>
+              <style>.cls-1{fill:none;stroke:#e6e6e6;stroke-miterlimit:10;stroke-width:1.7883px;}.cls-11,.cls-12,.cls-2,.cls-3,.cls-4,.cls-6{isolation:isolate;}.cls-2,.cls-4,.cls-6{font-size:17.32px;}.cls-2{fill:#666;font-family:GT-America-Regular, GT-America-Medium;}.cls-11,.cls-12,.cls-3,.cls-4,.cls-6{fill:#333;}.cls-3{opacity:0.87;}.cls-11,.cls-12,.cls-4,.cls-6{font-family:GT-America-Medium, GT-America-Regular;}.cls-5{letter-spacing:-0.024em;}.cls-6{letter-spacing:-0.003em;}.cls-7{letter-spacing:0em;}.cls-8{letter-spacing:0.003em;}.cls-9{letter-spacing:-0.034em;}.cls-10{letter-spacing:0.001em;}.cls-11{font-size:20px;}.cls-12{font-size:18px;}.cls-13{letter-spacing:-0.01em;}.cls-14{letter-spacing:-0.016em;}.cls-15{letter-spacing:-0.009em;}
+              </style>
+            </defs>
+            <line class="cls-1" x1="35" y1="491.4" x2="1795.7" y2="491.4"/>
+            <line class="cls-1" x1="35" y1="403.4" x2="1795.7" y2="403.4"/>
+            <line class="cls-1" x1="35" y1="315.4" x2="1795.7" y2="315.4"/>
+            <line class="cls-1" x1="35" y1="227.4" x2="1795.7" y2="227.4"/>
+            <line class="cls-1" x1="35" y1="139.4" x2="1795.7" y2="139.4"/>
+            <line class="cls-1" x1="35" y1="51.4" x2="1795.7" y2="51.4"/>
+            <text class="cls-2" transform="translate(18.1375 494.75)">0</text>
+            <text class="cls-2" transform="translate(18.1375 403.36)">2</text>
+            <text class="cls-2" transform="translate(18.1375 311.97)">4</text>
+            <text class="cls-2" transform="translate(18.1375 220.58)">6</text>
+            <text class="cls-2" transform="translate(18.1375 129.1899)">8</text>
+            <text class="cls-2" transform="translate(11.9916 52.3482)">10</text>
+
+            <path id="graph"/>
+
+            <circle class="cls-3" cx="35.7" cy="544" r="6.2"/><circle class="cls-3" cx="55.7" cy="544" r="6.2"/><circle class="cls-3" cx="75.7" cy="544" r="6.2"/><circle class="cls-3" cx="95.7" cy="544" r="6.2"/><circle class="cls-3" cx="115.7" cy="544" r="6.2"/><circle class="cls-3" cx="135.7" cy="544" r="6.2"/><circle class="cls-3" cx="155.7" cy="544" r="6.2"/><circle class="cls-3" cx="175.7" cy="544" r="6.2"/><circle class="cls-3" cx="195.7" cy="544" r="6.2"/><circle class="cls-3" cx="215.7" cy="544" r="6.2"/><circle class="cls-3" cx="235.7" cy="544" r="6.2"/><circle class="cls-3" cx="255.7" cy="544" r="6.2"/><circle class="cls-3" cx="275.7" cy="544" r="6.2"/><circle class="cls-3" cx="295.7" cy="544" r="6.2"/><circle class="cls-3" cx="315.7" cy="544" r="6.2"/><circle class="cls-3" cx="335.7" cy="544" r="6.2"/><circle class="cls-3" cx="355.7" cy="544" r="6.2"/><circle class="cls-3" cx="375.7" cy="544" r="6.2"/><circle class="cls-3" cx="395.7" cy="544" r="6.2"/><circle class="cls-3" cx="415.7" cy="544" r="6.2"/><circle class="cls-3" cx="435.7" cy="544" r="6.2"/><circle class="cls-3" cx="455.7" cy="544" r="6.2"/><circle class="cls-3" cx="475.7" cy="544" r="6.2"/><circle class="cls-3" cx="495.7" cy="544" r="6.2"/><circle class="cls-3" cx="515.7" cy="544" r="6.2"/><circle class="cls-3" cx="535.7" cy="544" r="6.2"/><circle class="cls-3" cx="555.7" cy="544" r="6.2"/><circle class="cls-3" cx="575.7" cy="544" r="6.2"/><circle class="cls-3" cx="595.7" cy="544" r="6.2"/><circle class="cls-3" cx="615.7" cy="544" r="6.2"/><circle class="cls-3" cx="635.7" cy="544" r="6.2"/><circle class="cls-3" cx="655.7" cy="544" r="6.2"/><circle class="cls-3" cx="675.7" cy="544" r="6.2"/><circle class="cls-3" cx="695.7" cy="544" r="6.2"/><circle class="cls-3" cx="715.7" cy="544" r="6.2"/><circle class="cls-3" cx="735.7" cy="544" r="6.2"/><circle class="cls-3" cx="755.7" cy="544" r="6.2"/><circle class="cls-3" cx="775.7" cy="544" r="6.2"/><circle class="cls-3" cx="795.7" cy="544" r="6.2"/><circle class="cls-3" cx="815.7" cy="544" r="6.2"/><circle class="cls-3" cx="835.7" cy="544" r="6.2"/><circle class="cls-3" cx="855.7" cy="544" r="6.2"/><circle class="cls-3" cx="875.7" cy="544" r="6.2"/><circle class="cls-3" cx="895.7" cy="544" r="6.2"/><circle class="cls-3" cx="915.7" cy="544" r="6.2"/><circle class="cls-3" cx="935.7" cy="544" r="6.2"/><circle class="cls-3" cx="955.7" cy="544" r="6.2"/><circle class="cls-3" cx="975.7" cy="544" r="6.2"/><circle class="cls-3" cx="995.7" cy="544" r="6.2"/><circle class="cls-3" cx="1015.7" cy="544" r="6.2"/><circle class="cls-3" cx="1035.7" cy="544" r="6.2"/><circle class="cls-3" cx="1055.7" cy="544" r="6.2"/><circle class="cls-3" cx="1075.7" cy="544" r="6.2"/><circle class="cls-3" cx="1095.7" cy="544" r="6.2"/><circle class="cls-3" cx="1115.7" cy="544" r="6.2"/><circle class="cls-3" cx="1135.7" cy="544" r="6.2"/><circle class="cls-3" cx="1155.7" cy="544" r="6.2"/><circle class="cls-3" cx="1175.7" cy="544" r="6.2"/><circle class="cls-3" cx="1195.7" cy="544" r="6.2"/><circle class="cls-3" cx="1215.7" cy="544" r="6.2"/><circle class="cls-3" cx="1235.7" cy="544" r="6.2"/><circle class="cls-3" cx="1255.7" cy="544" r="6.2"/><circle class="cls-3" cx="1275.7" cy="544" r="6.2"/><circle class="cls-3" cx="1295.7" cy="544" r="6.2"/><circle class="cls-3" cx="1315.7" cy="544" r="6.2"/><circle class="cls-3" cx="1335.7" cy="544" r="6.2"/><circle class="cls-3" cx="1355.7" cy="544" r="6.2"/><circle class="cls-3" cx="1375.7" cy="544" r="6.2"/><circle class="cls-3" cx="1395.7" cy="544" r="6.2"/><circle class="cls-3" cx="1415.7" cy="544" r="6.2"/><circle class="cls-3" cx="1435.7" cy="544" r="6.2"/><circle class="cls-3" cx="1455.7" cy="544" r="6.2"/><circle class="cls-3" cx="1475.7" cy="544" r="6.2"/><circle class="cls-3" cx="1495.7" cy="544" r="6.2"/><circle class="cls-3" cx="1515.7" cy="544" r="6.2"/><circle class="cls-3" cx="1535.7" cy="544" r="6.2"/><circle class="cls-3" cx="1555.7" cy="544" r="6.2"/><circle class="cls-3" cx="1575.7" cy="544" r="6.2"/><circle class="cls-3" cx="1595.7" cy="544" r="6.2"/><circle class="cls-3" cx="1615.7" cy="544" r="6.2"/><circle class="cls-3" cx="1635.7" cy="544" r="6.2"/><circle class="cls-3" cx="1655.7" cy="544" r="6.2"/><circle class="cls-3" cx="1675.7" cy="544" r="6.2"/><circle class="cls-3" cx="1695.7" cy="544" r="6.2"/><circle class="cls-3" cx="1715.7" cy="544" r="6.2"/><circle class="cls-3" cx="1735.7" cy="544" r="6.2"/><circle class="cls-3" cx="1755.7" cy="544" r="6.2"/><circle class="cls-3" cx="1775.7" cy="544" r="6.2"/><circle class="cls-3" cx="1795.7" cy="544" r="6.2"/>
+            <text class="cls-4" transform="translate(26.3633 530.8167)">12</text><text class="cls-4" transform="translate(185.3832 530.8163)"><tspan class="cls-5">2</tspan><tspan x="9.3354" y="0">0</tspan></text><text class="cls-6" transform="translate(385.3313 530.879)">3<tspan class="cls-7" x="10.0454" y="0">0</tspan></text><text class="cls-4" transform="translate(585.8313 530.879)"><tspan class="cls-8">4</tspan><tspan x="9.9932" y="0">0</tspan></text><text class="cls-4" transform="translate(786.3313 530.879)">50</text><text class="cls-4" transform="translate(985.5813 530.879)">60</text><text class="cls-4" transform="translate(1186.498 530.879)"><tspan class="cls-9">7</tspan><tspan x="8.1924" y="0">0</tspan></text><text class="cls-4" transform="translate(1386.8314 530.8792)">80</text><text class="cls-4" transform="translate(1586.0813 530.879)">90</text><text class="cls-4" transform="translate(1787.8313 530.879)">1<tspan class="cls-10" x="7.1187" y="0">0</tspan><tspan x="18.3936" y="0">0</tspan></text><g id="Layer_12" data-name="Layer 12"><text class="cls-11" transform="translate(1829.9567 549)">e</text><text class="cls-11" transform="translate(1840.6566 549)">t</text><text class="cls-11" transform="translate(1848.0366 549)">à</text><text class="cls-12" transform="translate(-0.0002 21.55)">pu<tspan class="cls-13" x="21.2397" y="0">n</tspan><tspan class="cls-14" x="31.7339" y="0">t</tspan><tspan class="cls-15" x="38.1597" y="0">e</tspan><tspan x="47.8618" y="0">ggio</tspan></text></g>
+
+            <defs>
+              <linearGradient id="gradSa" x1="0%" y1="40%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(239, 10, 86);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(239, 10, 86);stop-opacity:0" />
+              </linearGradient>
+              <linearGradient id="gradIn" x1="0%" y1="40%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(0, 204, 204);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(0, 204, 204);stop-opacity:0" />
+              </linearGradient>
+              <linearGradient id="gradLa" x1="0%" y1="40%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(102, 0, 204);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(102, 0, 204);stop-opacity:0" />
+              </linearGradient>
+              <linearGradient id="gradSo" x1="0%" y1="40%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(16, 81, 226);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(16, 81, 226);stop-opacity:0" />
+              </linearGradient>
+              <linearGradient id="gradGray" x1="0%" y1="40%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(239, 247, 249);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(239, 247, 249);stop-opacity:0" />
+              </linearGradient>
+            </defs>
+          </svg>
+    </div>
+
+    <div id="bottom"></div>
+
+
+
+    <script rel="preload" src="risultatiScript.js"></script>
+    <script rel="preload"></script>
+    <script src="graphGlobal.js" type="text/javascript"></script>
+    <script src="graphPersonali.js" type="text/javascript"></script>
+  </body>
+</html>

@@ -1,0 +1,369 @@
+body {
+  margin:0;
+  background-color:rgb(255,255,255);
+  font-family:gt-america-regular;
+
+}
+
+.container {
+  display:flex;
+  flex-direction:column;
+  flex-wrap:wrap;
+}
+
+.navbar-parent {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:999;
+}
+
+@media (max-width:900px) {
+  .navbar-parent {
+    display:none;
+  }
+}
+
+.mainhead {
+  background-color:rgb(255,255,255);
+  display:flex;
+  width:100%;
+  flex-direction: row;
+  /* margin-bottom:35px;
+  margin-top:20px; */
+  height:5vw;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+
+}
+
+@media (max-width:900px) {
+  .mainhead {
+    justify-content:space-between;
+    height:8vw;
+  }
+}
+
+.headerTitles {
+  color:rgb(190,190,185);
+  font-size:1.4vw;
+  margin:auto 0;
+  margin-right:25px;
+  margin-left:20px;
+  text-decoration:none;
+  font-family:gt-america-medium;
+
+  -o-transition:.5s;
+-ms-transition:.5s;
+-moz-transition:.5s;
+-webkit-transition:.5s;
+transition:.5s;
+}
+
+@media(max-width:900px) {
+  .headerTitles {
+    font-size:2.5vw;
+  }
+}
+
+.headerTitles:hover {
+  color:rgb(25,25,25);
+}
+
+.access-container {
+  display:flex;
+  flex-direction: column;
+  margin-top:12vw;
+  width:100%;
+  max-height:800px;
+  justify-content: center;
+  align-self:stretch;
+}
+
+@media (max-width:900px) {
+  .access-container {
+    margin-top:18vw;
+  }
+}
+
+.accImg {
+margin: 0 auto;
+margin-bottom:40px;
+max-width:82%;
+}
+
+@media (min-width:900px) {
+  .accImg {
+    max-width:28%;
+    margin-bottom:60px;
+  }
+}
+
+#accTxt {
+  width:100%;
+  min-height:50px;
+  margin: 0 auto;
+  margin-bottom: 0px;
+  /*font-size:26pt;*/
+  font-size:4.5vw;
+  color:rgb(80,80,80);
+  text-align: center;
+
+  -o-transition:.1s;
+-ms-transition:.1s;
+-moz-transition:.1s;
+-webkit-transition:.1s;
+transition:.1s;
+}
+
+@media (min-width:900px) {
+  #accTxt {
+    font-size:1.8vw;
+    margin-bottom: 20px;
+  }
+}
+
+#accCode {
+  margin: 0 auto;
+  min-height:40px;
+  width:250px;
+  text-align: center;
+  font-size:18pt;
+  background: none;
+  border:none;
+  border-bottom: 2px solid rgb(90,90,95);
+  text-transform: uppercase;
+}
+
+#accCode:hover {
+  border-bottom:2px solid rgb(135,135,140);
+  color:rgb(28,28,28);
+}
+#accCode:focus {
+  border-bottom:2px solid rgb(28,28,28);
+  color:rgb(28,28,28);
+}
+
+::placeholder {text-transform:none;};
+::-webkit-input-placeholder {text-transform: none;}
+:-moz-placeholder {text-transform: none;}
+::-moz-placeholder {text-transform: none;}
+:-ms-input-placeholder {text-transform: none;}
+
+*:focus {outline:0;}
+
+#accSubmit {
+  margin: 20 auto;
+  margin-bottom:0px;
+  min-height:50px;
+  width:250px;
+  background:rgb(50,50,50);
+  /* border-color:rgb(40,60,255); */
+  /* border-style:solid;
+  border-radius:2px; */
+  border:none;
+  color:rgb(255,255,255);
+  font-size:12pt;
+  box-shadow:2px 2px 5px rgb(145,145,150);
+
+  -o-transition:.2s;
+-ms-transition:.2s;
+-moz-transition:.2s;
+-webkit-transition:.2s;
+transition:.2s;
+}
+
+@media (min-width:900px) {
+  #accSubmit {
+    margin-bottom:20px;
+  }
+}
+
+#accSubmit:hover {
+  background:rgb(25,25,25);
+  /* border-color:rgb(50,70,225); */
+  color:rgb(210,210,215);
+}
+
+#accSubmit:active {
+  background:rgb(50,50,55);
+  /* border-color:rgb(50,70,225); */
+  color:rgb(210,210,215);
+}
+
+
+img {
+  pointer-events: none;
+}
+/*Mobile*/
+.mobile-navbar{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  background-color:rgb(255,255,255);
+  width:100%;
+  justify-content: flex-end;
+  flex-direction:column;
+}
+
+@media (max-width:900px) {
+  .mobile-navbar {
+    display:flex;
+  }
+}
+
+.ham-button{
+display:flex;
+flex-direction: row;
+justify-content: flex-end;
+align-self: flex-end;
+padding:10 15;
+width:80px;
+}
+
+.ham-icon{
+    display:flex;
+    flex-direction:column;
+
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+}
+
+.close-icon{
+    display:flex;
+    flex-direction:column;;
+
+    -o-transition:.2s;
+    -ms-transition:.2s;
+    -moz-transition:.2s;
+    -webkit-transition:.2s;
+    transition:.2s;
+}
+
+.ham-bar{
+  width: 25px;
+  height: 4px;
+  background-color: rgb(160,160,160);
+  border-radius:1px;
+  margin: 2px 0;
+
+  -o-transition:1s;
+  -ms-transition:1s;
+  -moz-transition:1s;
+  -webkit-transition:1s;
+  transition:1s;
+}
+
+.close-bar{
+  top:18px;
+  right:15px;
+  width: 25px;
+  height: 4px;
+  background-color: rgb(160,160,160);
+  border-radius:1px;
+  margin: 2px 0;
+
+  -o-transition:.1s;
+  -ms-transition:.1s;
+  -moz-transition:.1s;
+  -webkit-transition:.1s;
+  transition:.1s;
+}
+
+.cbar1 {
+  position:absolute;
+transform:rotate(45deg)
+}
+.cbar2 {
+  position:absolute;
+transform:rotate(-45deg)
+}
+
+.menu-txt{
+    font-family:gt-america-medium;
+    font-size:14pt;
+    margin:0 10;
+    color:rgb(140,140,140);
+
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+}
+
+
+.navbar-menu{
+  display:flex;
+  flex-direction:column;
+  overflow-y:hidden;
+  height:500px;
+  -o-transition:1s;
+  -ms-transition:1s;
+  -moz-transition:1s;
+  -webkit-transition:1s;
+  transition:1s;
+
+}
+
+.closed{
+  height:0;
+
+  -o-transition:1s;
+  -ms-transition:1s;
+  -moz-transition:1s;
+  -webkit-transition:1s;
+  transition:1s;
+}
+
+.headerTitlesM{
+    margin:5 20;
+    font-size:12vw;
+    font-family:gt-america-medium;
+    text-decoration: none;
+    color:rgb(190,190,185);
+    -o-transition:.2s;
+  -ms-transition:.2s;
+  -moz-transition:.2s;
+  -webkit-transition:.2s;
+  transition:.2s;
+}
+.headerTitlesM:focus{
+    color:rgb(25,25,25);
+}
+
+/*nobile end*/
+
+.hideOpacity{
+  opacity:0;
+}
+.hideDisplay{
+  display:none;
+}
+
+@font-face {
+  font-family: "gt-america-bold";
+  src: url(./fonts/GT-America-Bold.woff) format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "gt-america-medium";
+  src: url(./fonts/GT-America-Medium.woff) format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "gt-america-regular";
+  src: url(./fonts/GT-America-Regular.woff) format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
